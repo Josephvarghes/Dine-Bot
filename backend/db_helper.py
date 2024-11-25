@@ -42,3 +42,33 @@ def insert_order_item(food_item, quantity, order_id):
         cnx.rollback()
 
         return -1
+
+
+# Function to insert a record into the order_tracking table
+def insert_order_tracking(order_id, status):
+    cursor = cnx.cursor()
+
+    # Inserting the record into the order_tracking table
+    insert_query = "INSERT INTO order_tracking (order_id, status) VALUES (%s, %s)"
+    cursor.execute(insert_query, (order_id, status))
+
+    # Committing the changes
+    cnx.commit()
+
+    # Closing the cursor
+    cursor.close()
+
+def get_total_order_price(order_id):
+    cursor = cnx.cursor()
+
+    # Executing the SQL query to get the total order price
+    query = f"SELECT get_total_order_price({order_id})"
+    cursor.execute(query)
+
+    # Fetching the result
+    result = cursor.fetchone()[0]
+
+    # Closing the cursor
+    cursor.close()
+
+    return result
