@@ -1,4 +1,4 @@
-## Dine Boat
+# Dine Boat
 
 # Problem Statement
 
